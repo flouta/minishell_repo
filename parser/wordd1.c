@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   wordd1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flouta <flouta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ridrissi <ridrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:44:29 by flouta            #+#    #+#             */
-/*   Updated: 2021/11/25 18:33:11 by flouta           ###   ########.fr       */
+/*   Created: 2022/09/09 16:33:49 by ridrissi          #+#    #+#             */
+/*   Updated: 2022/09/09 16:33:59 by ridrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Includes/minishell.h"
 
-void	*ft_calloc(size_t count, size_t size)
+char	*wordd1(char *line, int *i)
 {
-	void	*c;
+	char	*s;
+	void	*p;
 
-	c = malloc(count * size);
-	if (!c)
-		return (NULL);
-	ft_bzero(c, size * count);
-	return (c);
+	s = malloc(1 * sizeof(char));
+	s[0] = '\0';
+	while (word_range(line[*i]))
+	{
+		p = s;
+		s = addit(s, line[*i]);
+		*i += 1;
+		free(p);
+	}
+	return (s);
 }

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_fctn5.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flouta <flouta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ridrissi <ridrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:44:29 by flouta            #+#    #+#             */
-/*   Updated: 2021/11/25 18:33:11 by flouta           ###   ########.fr       */
+/*   Created: 2022/08/27 16:58:20 by ridrissi          #+#    #+#             */
+/*   Updated: 2022/09/08 14:27:26 by ridrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Includes/minishell.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	ft_fctn5(t_token **token)
 {
-	void	*c;
-
-	c = malloc(count * size);
-	if (!c)
-		return (NULL);
-	ft_bzero(c, size * count);
-	return (c);
+	if (*token && ft_lstlastoken(*token)->e_tp == TOKEN_HEREDOC)
+		g_var.allow_expand = 0;
+	else if (*token && ft_lstlastoken(*token)->e_tp != TOKEN_HEREDOC)
+		g_var.allow_expand = 1;
 }

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flouta <flouta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ridrissi <ridrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:44:29 by flouta            #+#    #+#             */
-/*   Updated: 2021/11/25 18:33:11 by flouta           ###   ########.fr       */
+/*   Created: 2022/08/27 16:24:56 by ridrissi          #+#    #+#             */
+/*   Updated: 2022/08/27 19:25:38 by ridrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Includes/minishell.h"
 
-void	*ft_calloc(size_t count, size_t size)
+size_t	ft_strlen(const char *s)
 {
-	void	*c;
+	size_t	len;
 
-	c = malloc(count * size);
-	if (!c)
-		return (NULL);
-	ft_bzero(c, size * count);
-	return (c);
+	len = 0;
+	if(!s)
+		return 0;
+	while (s[len] != '\0')
+		len++;
+	return (len);
 }

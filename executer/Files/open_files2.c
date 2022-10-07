@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   open_files2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flouta <flouta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:44:29 by flouta            #+#    #+#             */
-/*   Updated: 2021/11/25 18:33:11 by flouta           ###   ########.fr       */
+/*   Created: 2022/09/09 23:33:21 by flouta            #+#    #+#             */
+/*   Updated: 2022/09/09 23:33:58 by flouta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_calloc(size_t count, size_t size)
+#include "../../Includes/minishell.h"
+int	*in_file(t_rdr *head, int *in_out)
 {
-	void	*c;
-
-	c = malloc(count * size);
-	if (!c)
-		return (NULL);
-	ft_bzero(c, size * count);
-	return (c);
+	if (in_out[0] != 0)
+		close(in_out[0]);
+	in_out[0] = open(head->content, O_RDONLY);
+	if (in_out[0] < 0)
+	{
+		perror("FILE");
+		in_out[2] = -1;
+	}
+	return (in_out);
 }

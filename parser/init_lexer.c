@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   init_lexer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: flouta <flouta@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ridrissi <ridrissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:44:29 by flouta            #+#    #+#             */
-/*   Updated: 2021/11/25 18:33:11 by flouta           ###   ########.fr       */
+/*   Created: 2022/08/27 16:26:49 by ridrissi          #+#    #+#             */
+/*   Updated: 2022/09/09 18:55:41 by ridrissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../Includes/minishell.h"
 
-void	*ft_calloc(size_t count, size_t size)
+t_lexer	*init_lexer(char *value, int i)
 {
-	void	*c;
+	t_lexer	*lx;
 
-	c = malloc(count * size);
-	if (!c)
-		return (NULL);
-	ft_bzero(c, size * count);
-	return (c);
+	lx = (t_lexer *) malloc(sizeof(t_lexer));
+	if (!lx)
+		return (0);
+	lx->i = i;
+	lx->content = value;
+	lx->c = lx->content[lx->i];
+	return (lx);
 }

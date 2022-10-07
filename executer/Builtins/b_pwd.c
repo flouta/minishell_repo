@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   b_pwd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flouta <flouta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:44:29 by flouta            #+#    #+#             */
-/*   Updated: 2021/11/25 18:33:11 by flouta           ###   ########.fr       */
+/*   Created: 2022/08/29 15:22:14 by flouta            #+#    #+#             */
+/*   Updated: 2022/08/29 15:22:30 by flouta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_calloc(size_t count, size_t size)
+#include "../../Includes/minishell.h"
+void	b_pwd(void)
 {
-	void	*c;
+	char	*path;
 
-	c = malloc(count * size);
-	if (!c)
-		return (NULL);
-	ft_bzero(c, size * count);
-	return (c);
+	path = NULL;
+	path = getcwd(path, PATH_MAX);
+	if (path == NULL)
+	{
+		perror("PWD");
+		g_var.exit_code = 1;
+		return ;
+	}
+	printf("%s\n", path);
+	free(path);
 }

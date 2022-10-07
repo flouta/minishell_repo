@@ -14,12 +14,10 @@
 
 int	nlen(int n)
 {
-	int		i;
 	int		size;
 	long	nbr;
 
 	size = 0;
-	i = 0;
 	nbr = (long) n;
 	if (nbr == 0)
 		return (1);
@@ -39,11 +37,9 @@ int	nlen(int n)
 char	*ft_itoa(int n)
 {
 	int		size;
-	int		i;
 	char	*ptr;
 	long	nbr;
 
-	i = 0;
 	nbr = (long) n;
 	size = nlen(nbr);
 	ptr = (char *)malloc(sizeof(char) * size + 1);

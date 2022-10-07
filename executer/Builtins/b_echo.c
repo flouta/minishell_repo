@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   b_echo.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: flouta <flouta@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/18 18:44:29 by flouta            #+#    #+#             */
-/*   Updated: 2021/11/25 18:33:11 by flouta           ###   ########.fr       */
+/*   Created: 2022/08/29 15:17:00 by flouta            #+#    #+#             */
+/*   Updated: 2022/09/09 23:32:02 by flouta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../Includes/minishell.h"
 
-void	*ft_calloc(size_t count, size_t size)
+void	b_echo(char **arg)
 {
-	void	*c;
+	int	i;
+	int	d;
 
-	c = malloc(count * size);
-	if (!c)
-		return (NULL);
-	ft_bzero(c, size * count);
-	return (c);
+	i = check_opt(arg);
+	d = i;
+	if (arg[i])
+	{
+		ft_putstr_fd(arg[i], 1);
+		i++;
+		while (arg[i])
+		{
+			write(1, " ", 1);
+			ft_putstr_fd(arg[i], 1);
+			i++;
+		}
+	}
+	if (d == 1)
+		ft_putstr_fd("\n", 1);
 }
